@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  tickets_available: 1
+  location: MyString
+  date: 2021-05-13 20:02:09
+  type: 1
+  user: one
+
+two:
+  title: MyString
+  tickets_available: 1
+  location: MyString
+  date: 2021-05-13 20:02:09
+  type: 1
+  user: two

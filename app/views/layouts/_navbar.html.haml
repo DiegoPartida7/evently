@@ -1,0 +1,16 @@
+.bs-example
+  %nav.navbar.navbar-expand-md.navbar-light.bg-light
+    %a.navbar-brand{:href => "#"} Evently
+    %button.navbar-toggler{"data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarCollapse.collapse.navbar-collapse.justify-content-between
+      .navbar-nav
+        %a.nav-item.nav-link.active{:href => root_path} Inicio 
+      .navbar-nav
+        %form.form-inline
+        .input-group
+          %input.form-control{:placeholder => "Buscar", :type => "text"}/
+          .input-group-append
+            %button.btn.btn-secondary{:type => "button"}
+              %i.fa.fa-search
+        %a.nav-item.nav-link{:href => new_user_session_path} Iniciar Sesión

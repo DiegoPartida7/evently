@@ -1,0 +1,25 @@
+.bs-example
+  %nav.navbar.navbar-expand-md.navbar-light.bg-light
+    %a.navbar-brand{:href => "#"} Evently
+    %button.navbar-toggler{"data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarCollapse.collapse.navbar-collapse.justify-content-between
+      .navbar-nav
+        %a.nav-item.nav-link.active{:href => root_path} Inicio
+        %a.nav-item.nav-link{:href => "#"} Perfil
+        -# .nav-item.dropdown
+        -#   %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Messages
+        -#   .dropdown-menu
+        -#     %a.dropdown-item{:href => "#"} Inbox
+        -#     %a.dropdown-item{:href => "#"} Sent
+        -#     %a.dropdown-item{:href => "#"} Drafts
+      .navbar-nav
+        %form.form-inline
+        .input-group
+          %input.form-control{:placeholder => "Search", :type => "text"}/
+          .input-group-append
+            %button.btn.btn-secondary{:type => "button"}
+              %i.fa.fa-search
+        .nav-item.nav-link{style:"min-width:150px;"}
+          = link_to "Cerrar Sesión", destroy_user_session_path, method: "delete"
+          -# = link_to "Delete Book", @book, method: "delete", { confirm: "Are you sure?", disable_with: "Processing..." }

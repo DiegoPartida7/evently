@@ -1,0 +1,47 @@
+%section.section-conten.padding-y{:style => "min-height:50vh"}
+  .card.mx-auto.my-5{:style => "max-width: 380px;"}
+    .card-body
+      %h1.h2.text-center.mb-4 Crea tu cuenta
+      .mb-3
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = f.error_notification
+          = f.input :name, autofocus: false, label: "Nombre", placeholder: "Ej. Forrest Gump"
+          = f.input :email, autofocus: false, label: "Correo electrónico:", placeholder: "Ej. forest.gump@bubba.com"
+          = f.input :password, autocomplete: "off", label: "Contraseña:"
+          .mt-3.text-center
+            = f.button :submit, "Regístrate ahora", class: "btn btn-primary btn-block btn-lg", data: { disable_with: "Procesando...", signup_ref: 'Onsite' }  
+
+    .card-footer.text-center
+      = render "devise/shared/links"
+
+
+
+-# <h2>Sign up</h2>
+
+-# <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+-#   <%= render "devise/shared/error_messages", resource: resource %>
+
+-#   <div class="field">
+-#     <%= f.label :email %><br />
+-#     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+-#   </div>
+
+-#   <div class="field">
+-#     <%= f.label :password %>
+-#     <% if @minimum_password_length %>
+-#     <em>(<%= @minimum_password_length %> characters minimum)</em>
+-#     <% end %><br />
+-#     <%= f.password_field :password, autocomplete: "new-password" %>
+-#   </div>
+
+-#   <div class="field">
+-#     <%= f.label :password_confirmation %><br />
+-#     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+-#   </div>
+
+-#   <div class="actions">
+-#     <%= f.submit "Sign up" %>
+-#   </div>
+-# <% end %>
+
+-# <%= render "devise/shared/links" %>
