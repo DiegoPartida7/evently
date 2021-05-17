@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_05_17_044334) do
+=======
+ActiveRecord::Schema.define(version: 0) do
+>>>>>>> 450c80ea86c76a6ecc850c10cb9db29122c97277
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -99,4 +104,6 @@ ActiveRecord::Schema.define(version: 2021_05_17_044334) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "events", "users"
+=======
+>>>>>>> 450c80ea86c76a6ecc850c10cb9db29122c97277
 end
