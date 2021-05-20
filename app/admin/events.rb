@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
-  permit_params :title, :image, :tickets_available, :location,  :date, :type, :event_type
+  permit_params :title, :image, :tickets_available, :location,  :date, :type, :event_type, :user_id
   # == Menu =================================================================
 
   # == Includes =============================================================
@@ -83,6 +83,7 @@ ActiveAdmin.register Event do
   # == Form =================================================================
   form do |f|
     f.inputs 'Generales' do
+      f.input :user
       f.input :title
       f.input :tickets_available
       f.input :location

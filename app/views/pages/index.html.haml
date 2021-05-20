@@ -1,9 +1,23 @@
-%h1.mt-3.text-center
-  Eventos
+.container
+  %h1.mt-3.mb-3.text-center
+    Eventos
 
-.card{:style => "width: 18rem;"}
-  %img.card-img-top{:alt => "...", :src => "..."}/
-  .card-body
-    %h5.card-title Card title
-    %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-    %a.btn.btn-primary{:href => "#"} Go somewhere
+  %article.card
+    %header.card-header 
+      Disponibles
+    .card-body
+      .row
+        -Event.where(event_type: 'Open').each do |event|
+          .col-md-3
+            %figure.card.card-product-grid.mb-3
+              .img-wrap
+                -if event.image.attached?
+                  = image_tag event.image, class: 'img-cover'
+
+              %figcaption.info-wrap
+                %a.title.text-truncate{:href => "#"}
+                  #{event.title}
+                %p.price.mb-2 $1280
+                %a.btn.btn-primary.btn-sm{:href => "#"} Add to cart
+                %a.btn.btn-danger.btn-sm{"data-toggle" => "tooltip", :href => "#", :title => "Remove from wishlist"}
+                  %i.fa.fa-times
