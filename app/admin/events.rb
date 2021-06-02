@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
-  permit_params :title, :image, :tickets_available, :location,  :date, :type, :event_type, :user_id
+  permit_params :title, :image, :tickets_available, :location,  :date, :type, :event_type, :user_id, :price
   # == Menu =================================================================
 
   # == Includes =============================================================
@@ -92,6 +92,7 @@ ActiveAdmin.register Event do
       f.input :event_type,
         as: :select,
         collection: Event::EVENT_TYPES
+      f.input :price
       # f.select :event_type, Event::EVENT_TYPES
       f.input :image, as: :file
       # f.input :parent_id,

@@ -1,6 +1,10 @@
 /* MIXINS */
+
+@import "bootstrap/variables";
+@import "bootstrap/functions";
 @import "mixins/breakpoints";
 
 /* MODULES */
 
 @import "modules/landing";
+@import "modules/jquery.seat-charts";
