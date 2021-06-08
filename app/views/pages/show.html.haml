@@ -1,0 +1,33 @@
+
+= image_tag(@event.image , class:"img-cover2")
+.hero-text
+  %h1{style:"font-size:80px;"}
+    #{@event.title}
+
+.container.mt-4.mb-3.book-container
+  .row.justify-content-center.mb-4
+    .col-lg-12.col-md-12.col-sm-12.panel-style
+      %h3.mb-5.text-center.text-white
+        Detalles del Evento
+      .row.justify-content-center
+        .col-lg-10.col-md-8.col-sm-10.col-xs-12
+          .centered
+            .card.card-shadow.order-summary.mb-5
+              .card-body
+                %h3.mb-2
+                  hola
+                %form#reservation{ :method => "post", action: create_ticket_path(@event)}
+                  %section#seats
+                    -counter = 0;
+                    -@event.tickets_available.times do |seat|
+                      -if @event.sold.include? seat
+                        -# -Rails.logger.info seat
+                        -# -# %i.fa.fa-user.icon
+                        %input.seat-select{:disabled => "disabled", :name => "seat[]", :type => "checkbox", :value => "#{counter}", id: "seat-#{counter}"}/
+                        %label.seat.red{:for => "seat-#{counter}"}
+                      -else 
+                        %input.seat-select{:name => "seat[]", :type => "checkbox", :value => "#{counter}", id: "seat-#{counter}"}/
+                        %label.seat{:for => "seat-#{counter}"}
+                      -counter = counter + 1
+                  -# = f.button  :submit , name: "subaction",value: "update"
+                  %input{:type => "submit"}/

@@ -1,5 +1,5 @@
 .container
-  %h1.mt-3.mb-3.text-center
+  %h1.mt-5.mb-5.text-center.text-white
     Eventos
 
   %article.card
@@ -8,7 +8,7 @@
     .card-body
       .row
         -Event.where(event_type: 'Open').each do |event|
-          .col-md-3
+          .col-md-3.text-center
             %figure.card.card-product-grid.mb-3
               .img-wrap
                 -if event.image.attached?
@@ -17,7 +17,11 @@
               %figcaption.info-wrap
                 %a.title.text-truncate{:href => "#"}
                   #{event.title}
-                %p.price.mb-2 $1280
-                %a.btn.btn-primary.btn-sm{:href => "#"} Add to cart
-                %a.btn.btn-danger.btn-sm{"data-toggle" => "tooltip", :href => "#", :title => "Remove from wishlist"}
-                  %i.fa.fa-times
+                %p.price.mb-2 
+                  Precio: #{number_to_currency(event.price)}
+                %a.btn.btn-primary.btn-sm{:href => event_path(event.id), style:"width:100%;"} Ver Evento
+                -# %a.btn.btn-danger.btn-sm{"data-toggle" => "tooltip", :href => "#", :title => "Remove from wishlist"}
+                -#   %i.fa.fa-times
+
+
+
