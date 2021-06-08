@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#index'
   get 'eventos/:id', to: 'pages#show', as: :event
+  post 'ticket/:event_id', to: 'pages#create_ticket', as: :create_ticket
+
 
 end

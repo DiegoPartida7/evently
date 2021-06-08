@@ -84,3 +84,28 @@ a {
 body {
   background-color: #262938 !important;
 }
+
+.seat {
+  float: left;
+  display: block;
+  margin: 5px;
+  background: #4caf50;
+  width: 100px;
+  height: 140px;
+}
+
+.seat-select {
+  display: none;
+}
+
+.seat-select:checked + .seat {
+  background: blue;
+}
+
+input[type="checkbox"]:checked {
+  background: blue;
+}
+
+.red {
+  background-color: red !important;
+}
