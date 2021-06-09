@@ -48,7 +48,7 @@
                                 Ticket id: #{ticket.id}
                               %p.card-text
                                 = truncate(event.description, :length => 80)
-                              %a.btn.btn-primary{:href => "#"} Ver Ticket
+                              %a.btn.btn-primary{:href => ticket_path(ticket)} Ver Ticket
                 -else 
                   %h2
                     No hay

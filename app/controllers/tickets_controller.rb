@@ -16,8 +16,6 @@ class TicketsController < ApplicationController
 
   def show
     render layout: 'main'
-
-
   end
 
   def create_ticket
@@ -29,7 +27,7 @@ class TicketsController < ApplicationController
       @event.save!
     end
 
-    redirect_to root_path
+    redirect_to root_path, notice: 'Has comprado boletos!'
   end
 
 

@@ -3,17 +3,13 @@ class PagesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_tickets, only: [:my_tickets] 
+  
   def index
     if current_user
       render layout: 'main'
     else
       render layout: 'application'
     end
-
-  end
-
-  def show
-    render layout: 'main'
 
   end
 

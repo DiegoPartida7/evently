@@ -2,6 +2,8 @@ class Event < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_many :tickets
+  has_secure_token :token
+  has_secure_token :auth_token, length: 36
   
   EVENT_TYPES = (EventTypeClosed, EventTypeOpen = 'Closed', 'Open')
   scope :closed, -> {

@@ -2,31 +2,26 @@ class EventsController < ApplicationController
 
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_tickets, only: [:index] 
-  before_action :set_ticket, only: [:show] 
+  before_action :set_events, only: [:index]
+  before_action :set_event, only: [:edit, :update, :show]
 
   def index
-    if current_user
-      render layout: 'main'
-    else
-      render layout: 'application'
-    end
-
+    render layout: 'main'
   end
 
   def show
     render layout: 'main'
-
-
   end
 
-  def event_creation
+  def new
     @event = Event.new
+
+    render layout: 'main'
   end
 
-  def create_event
+  def create 
     @event = Event.new(event_params)
-    
+    @event.user_id = current_user.id
     if @event.save
       redirect_to root_path, notice: "Se ha creado el evento"
     else
@@ -34,33 +29,44 @@ class EventsController < ApplicationController
     end
   end
 
-  def create_ticket
-    @event= Event.find(params[:event_id])
-    seats = params[:seat]
-    seats.each do |seatt|
-      Ticket.create!(user_id: current_user.id, event_id: @event.id, seat_number: seatt)
-      @event.sold << seatt
-      @event.save!
+  def edit
+
+    unless current_user == @event.user
+      redirect_back fallback_location: root_path, notice: 'El usuario no es dueño'
     end
 
-    redirect_to root_path
+    render layout: 'main'
+  end
+
+  def update
+    if @event.update event_params
+      redirect_to my_events_path, notice: "Se ha modificado el evento"
+    else
+      render :new, status: :unprocessable_entity
+    end
+    
+  end
+
+  def private_show
+    @event = Event.where(auth_token: params[:auth_token]).first
+    render layout: 'main'
+  end
+
+  private
+
+  def event_params
+    params.require(:event).permit(:title, :tickets_available, :description, :location, :date, :event_type, :price, :image)
   end
 
 
-  private
+  def set_events
+    @events = Event.where(user_id: current_user.id)
+    @private_events = @events.where(event_type: 'Closed')
+    @open_events = @events.where(event_type: 'Open')
+  end
 
   def set_event
     @event = Event.find(params[:id])
   end
-
-  def set_tickets
-    @tickets= Ticket.where(user_id: current_user.id)
-  end
-
-  def set_ticket
-    @ticket= Ticket.find(params[:id])
-    @event= Event.find(@ticket.event_id)
-  end
-
 
 end
