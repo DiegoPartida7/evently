@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   has_many :tickets
   has_secure_token :token
   has_secure_token :auth_token, length: 36
+
+  validates :image, :price, :title, :description, :tickets_available, :date
   
   EVENT_TYPES = (EventTypeClosed, EventTypeOpen = 'Closed', 'Open')
   scope :closed, -> {
