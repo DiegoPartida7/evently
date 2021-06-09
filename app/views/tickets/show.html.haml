@@ -22,10 +22,16 @@
                   %span{style: "font-size:19px; font-weight:normal;"}
                     =@event.date.strftime("%d/%m/%Y")
                 %h3.mb-4
-                  Asiento:
-                  %span{style: "font-size:19px; font-weight:normal;"}
-                    =@ticket.seat_number
-                %h3.mb-4
                   Numero Secreto:
                   %span{style: "font-size:19px; font-weight:normal;"}
                     =@ticket.token
+                %h3.mb-4
+                  Asiento:
+                  %span{style: "font-size:19px; font-weight:normal;"}
+                    =@ticket.seat_number
+                
+                -@event.tickets_available.times do |seat|
+                  -if seat == @ticket.seat_number
+                    %div.seat.red
+                  -else
+                    %div.seat
