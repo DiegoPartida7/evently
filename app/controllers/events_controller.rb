@@ -27,6 +27,8 @@ class EventsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+    render layout: 'main'
+
   end
 
   def edit
@@ -44,7 +46,8 @@ class EventsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-    
+    render layout: 'main'
+
   end
 
   def private_show
