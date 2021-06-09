@@ -46,6 +46,10 @@
                                 = event.title
                               %h5.card-title
                                 Ticket id: #{ticket.id}
+                              %h5.mb-4
+                                Asiento:
+                                %span{style: "font-size:19px; font-weight:normal;"}
+                                  =ticket.seat_number
                               %p.card-text
                                 = truncate(event.description, :length => 80)
                               %a.btn.btn-primary{:href => ticket_path(ticket)} Ver Ticket
