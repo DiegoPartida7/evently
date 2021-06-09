@@ -33,10 +33,6 @@ class TicketsController < ApplicationController
 
   private
 
-  def set_event
-    @event = Event.find(params[:id])
-  end
-
   def set_tickets
     @tickets= Ticket.where(user_id: current_user.id)
   end
@@ -45,6 +41,5 @@ class TicketsController < ApplicationController
     @ticket= Ticket.find(params[:id])
     @event= Event.find(@ticket.event_id)
   end
-
 
 end

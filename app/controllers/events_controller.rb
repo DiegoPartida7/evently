@@ -15,7 +15,6 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-
     render layout: 'main'
   end
 
@@ -24,19 +23,16 @@ class EventsController < ApplicationController
     @event.user_id = current_user.id
     if @event.save
       redirect_to root_path, notice: "Se ha creado el evento"
+      render layout: 'main'
     else
       render :new, status: :unprocessable_entity
     end
-    render layout: 'main'
-
   end
 
   def edit
-
     unless current_user == @event.user
       redirect_back fallback_location: root_path, notice: 'El usuario no es dueño'
     end
-
     render layout: 'main'
   end
 
@@ -47,7 +43,6 @@ class EventsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
     render layout: 'main'
-
   end
 
   def private_show

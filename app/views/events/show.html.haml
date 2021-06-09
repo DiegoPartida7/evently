@@ -28,9 +28,6 @@
                     #{@event.date.strftime("%d/%m/%Y")}
                 %h3.mb-4
                   Asientos:
-
-
-
                 %form#reservation{ :method => "post", action: create_ticket_path(@event)}
                   .row 
                     .col-12
