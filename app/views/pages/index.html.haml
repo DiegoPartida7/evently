@@ -15,7 +15,7 @@
                   = image_tag event.image, class: 'img-cover'
 
               %figcaption.info-wrap
-                %a.title.text-truncate{:href => "#"}
+                %a.title.text-truncate{:href => event_path(event.id)}
                   #{event.title}
                 %p.price.mb-2 
                   Precio: #{number_to_currency(event.price)}
