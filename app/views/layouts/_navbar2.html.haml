@@ -5,9 +5,12 @@
       %span.navbar-toggler-icon
     #navbarCollapse.collapse.navbar-collapse.justify-content-between
       .navbar-nav
-        %a.nav-item.nav-link.active{:href => root_path} Inicio
-        %a.nav-item.nav-link{:href => "#"} Perfil
+        %a.nav-item.nav-link.active{:href => root_path} Eventos
+        -# %a.nav-item.nav-link{:href => "#"} Perfil
         %a.nav-item.nav-link{:href => tickets_path} Mis Tickets
+        %a.nav-item.nav-link{:href => new_event_path} Nuevo Evento
+        %a.nav-item.nav-link{:href => my_events_path} Mis Eventos
+
         -# .nav-item.dropdown
         -#   %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Messages
         -#   .dropdown-menu

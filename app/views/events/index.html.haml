@@ -1,0 +1,56 @@
+.container
+  %h1.mt-5.mb-5.text-center.text-white
+    Mis Eventos
+
+  %article.card
+    %header.card-header 
+      Privados
+    .card-body
+      .row
+        -@private_events.each do |event|
+          .col-md-3.text-center
+            %figure.card.card-product-grid.mb-3
+              .img-wrap
+                -if event.image.attached?
+                  = image_tag event.image, class: 'img-cover'
+              %figcaption.info-wrap
+                %a.title.text-truncate{:href => "#"}
+                  #{event.title}
+                %p.price.mb-2 
+                  Precio: #{number_to_currency(event.price)}
+                %p.mb-2 
+                  Token: #{event.auth_token}
+                .row 
+                  .col-6.p-0.pr-1
+                    %a.btn.btn-primary.btn-sm{:href => event_path(event.id), style:"width:100%;"}
+                      Ver Evento
+                  .col-6.p-0
+                    %a.btn.btn-primary.btn-sm{:href => edit_event_path(event.id), style:"width:100%;"}
+                      Editar Evento
+    %header.card-header 
+      Públicos
+    .card-body
+      .row
+        -@open_events.each do |event|
+          .col-md-3.text-center
+            %figure.card.card-product-grid.mb-3
+              .img-wrap
+                -if event.image.attached?
+                  = image_tag event.image, class: 'img-cover'
+
+              %figcaption.info-wrap
+                %a.title.text-truncate{:href => "#"}
+                  #{event.title}
+                %p.price.mb-2 
+                  Precio: #{number_to_currency(event.price)}
+                .row 
+                  .col-6.p-0.pr-1
+                    %a.btn.btn-primary.btn-sm{:href => event_path(event.id), style:"width:100%;"}
+                      Ver Evento
+                  .col-6.p-0
+                    %a.btn.btn-primary.btn-sm{:href => edit_event_path(event.id), style:"width:100%;"}
+                      Editar Evento
+
+
+
+

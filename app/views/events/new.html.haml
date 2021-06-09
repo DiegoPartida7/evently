@@ -1,0 +1,28 @@
+.container.mt-4.mb-3.book-container
+  .row.justify-content-center.mb-4
+    .col-lg-12.col-md-12.col-sm-12.panel-style
+      %h3.mb-5.text-center.text-white
+        Detalles del Evento
+      .row.justify-content-center
+        .col-lg-10.col-md-8.col-sm-10.col-xs-12
+          .centered
+            .card.card-shadow.order-summary.mb-5
+              .card-body
+                %h3.mb-4
+                  Descripción del Evento:
+                = simple_form_for @event, url: create_event_path do |f|
+                  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+                  .form-inputs
+                    = f.input :title, label: 'Título'
+                    = f.input :description, label: 'Descripción'
+                    = f.input :tickets_available, label: 'Cantidad de Tickets'
+                    = f.input :location, label: 'Ubicación'
+                    = f.input :date, data:{ provide:'datepicker' }
+                    = f.input :event_type,
+                      as: :select,
+                      collection: Event::EVENT_TYPES,
+                      label: 'Tipo de Evento'
+                    = f.input :price, label: 'Precio de Ticket'
+                    = f.input :image, as: :file
+                  .form-actions
+                    = f.submit 'Crear', class: 'btn btn-light', data: { disable_with: "Procesando..." }
