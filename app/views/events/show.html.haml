@@ -1,5 +1,5 @@
-
-= image_tag(@event.image , class:"img-cover2")
+-if @event.image.attached?
+  = image_tag(@event.image , class:"img-cover2")
 .hero-text
   %h1{style:"font-size:80px;"}
     #{@event.title}
