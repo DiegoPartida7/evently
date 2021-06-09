@@ -34,6 +34,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'activeadmin'
 gem 'activeadmin_addons'
+gem "aws-sdk-s3", require: false
 
 
 
