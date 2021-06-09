@@ -14,20 +14,39 @@
           .centered
             .card.card-shadow.order-summary.mb-5
               .card-body
-                %h3.mb-2
-                  hola
+                %h3.mb-4
+                  Descripción del Evento:
+                  %span{style: "font-size:19px; font-weight:normal;"}
+                    #{@event.description}
+                %h3.mb-4
+                  Lugar:
+                  %span{style: "font-size:19px; font-weight:normal;"}
+                    #{@event.location}
+                %h3.mb-4
+                  Fecha:
+                  %span{style: "font-size:19px; font-weight:normal;"}
+                    #{@event.date.strftime("%d/%m/%Y")}
+                %h3.mb-4
+                  Asientos:
+
+
+
                 %form#reservation{ :method => "post", action: create_ticket_path(@event)}
-                  %section#seats
-                    -counter = 0;
-                    -@event.tickets_available.times do |seat|
-                      -if @event.sold.include? seat
-                        -# -Rails.logger.info seat
-                        -# -# %i.fa.fa-user.icon
-                        %input.seat-select{:disabled => "disabled", :name => "seat[]", :type => "checkbox", :value => "#{counter}", id: "seat-#{counter}"}/
-                        %label.seat.red{:for => "seat-#{counter}"}
-                      -else 
-                        %input.seat-select{:name => "seat[]", :type => "checkbox", :value => "#{counter}", id: "seat-#{counter}"}/
-                        %label.seat{:for => "seat-#{counter}"}
-                      -counter = counter + 1
-                  -# = f.button  :submit , name: "subaction",value: "update"
-                  %input{:type => "submit"}/
+                  .row 
+                    .col-12
+                      %section#seats
+                        -counter = 0;
+                        -@event.tickets_available.times do |seat|
+                          -if @event.sold.include? seat
+                            -# -Rails.logger.info seat
+                            -# -# %i.fa.fa-user.icon
+                            %input.seat-select{:disabled => "disabled", :name => "seat[]", :type => "checkbox", :value => "#{counter}", id: "seat-#{counter}"}/
+                            %label.seat.red{:for => "seat-#{counter}"}
+                          -else 
+                            %input.seat-select{:name => "seat[]", :type => "checkbox", :value => "#{counter}", id: "seat-#{counter}"}/
+                            %label.seat{:for => "seat-#{counter}"}
+                          -counter = counter + 1
+                      -# = f.button  :submit , name: "subaction",value: "update"
+                  .row 
+                    .col-12
+                      %input.mt-3{:type => "submit", value: "Comprar"}

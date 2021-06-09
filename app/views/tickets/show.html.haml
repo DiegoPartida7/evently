@@ -1,0 +1,31 @@
+.container.mt-4.mb-3.book-container
+  .row.justify-content-center.mb-4
+    .col-lg-12.col-md-12.col-sm-12.panel-style
+      %h3.mb-5.text-center.text-white
+        Mi Ticket
+      .row.justify-content-center
+        .col-lg-10.col-md-8.col-sm-10.col-xs-12
+          .centered
+            .card.card-shadow.order-summary.mb-5
+              .card-body.text-center
+                = image_tag @event.image, class: 'card-img-top mb-5', style: 'max-height:400px !important; max-width:400px !important;'
+                %h3.mb-4
+                  Descripción del Evento:
+                  %span{style: "font-size:19px; font-weight:normal;"}
+                    =@event.description
+                %h3.mb-4
+                  Lugar:
+                  %span{style: "font-size:19px; font-weight:normal;"}
+                    =@event.location
+                %h3.mb-4
+                  Fecha:
+                  %span{style: "font-size:19px; font-weight:normal;"}
+                    =@event.date.strftime("%d/%m/%Y")
+                %h3.mb-4
+                  Asiento:
+                  %span{style: "font-size:19px; font-weight:normal;"}
+                    =@ticket.seat_number
+                %h3.mb-4
+                  Numero Secreto:
+                  %span{style: "font-size:19px; font-weight:normal;"}
+                    =@ticket.token
