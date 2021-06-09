@@ -20,6 +20,8 @@ Rails.application.configure do
   config.assets.precompile += 
   %w( #{Rails.root}/vendor/assets/javascripts/active_admin.js.coffee)
   config.assets.compile = true
+
+  config.active_storage.service = :amazon
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
