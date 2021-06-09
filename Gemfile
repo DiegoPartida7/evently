@@ -33,6 +33,8 @@ gem 'hamlit'
 gem 'devise'
 gem 'simple_form'
 gem 'activeadmin'
+gem 'activeadmin_addons'
+
 
 
 group :development, :test do
