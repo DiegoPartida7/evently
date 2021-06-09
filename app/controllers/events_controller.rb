@@ -23,7 +23,6 @@ class EventsController < ApplicationController
     @event.user_id = current_user.id
     if @event.save
       redirect_to root_path, notice: "Se ha creado el evento"
-      render layout: 'main'
     else
       render :new, status: :unprocessable_entity
     end
