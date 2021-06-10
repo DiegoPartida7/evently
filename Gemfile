@@ -35,7 +35,7 @@ gem 'simple_form'
 gem 'activeadmin'
 gem 'activeadmin_addons'
 gem "aws-sdk-s3", require: false
-
+gem 'rails-erd', group: :development
 
 
 group :development, :test do
