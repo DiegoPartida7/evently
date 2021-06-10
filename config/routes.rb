@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   devise_for :users
+  resources :users
+
   root to: 'pages#index'
   get 'eventos/:id', to: 'events#show', as: :event
   get 'mis-tickets', to: 'tickets#index', as: :tickets
@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   post 'nuevo-evento-publicar', to: 'events#create', as: :create_event
   get 'ticket/:id', to: 'tickets#show', as: :ticket
   post 'ticket/:event_id', to: 'tickets#create_ticket', as: :create_ticket
+
+  devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
+  ActiveAdmin.routes(self)
 
 
 end
