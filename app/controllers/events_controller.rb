@@ -5,13 +5,24 @@ class EventsController < ApplicationController
   
   before_action :set_events, only: [:index]
   before_action :set_event, only: [:edit, :update, :show]
+  before_action :set_private_event, only: [:destroy]
 
   def index
-    render layout: 'main'
+
+    if current_user
+      render layout: 'main'
+    else
+      render layout: 'application'
+    end
+
   end
 
   def show
-    render layout: 'main'
+    if current_user
+      render layout: 'main'
+    else
+      render layout: 'application'
+    end
   end
 
   def new
@@ -50,6 +61,10 @@ class EventsController < ApplicationController
     render layout: 'main'
   end
 
+  def destroy
+    @event.destroy!
+    redirect_to root_path, notice: "borraste el evento"
+  end
   private
 
   def event_params
@@ -64,7 +79,11 @@ class EventsController < ApplicationController
   end
 
   def set_event
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:id]).decorate
+  end
+
+  def set_private_event
+    @event = Event.where(auth_token: params[:auth_token]).first
   end
 
 end

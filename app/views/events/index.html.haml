@@ -20,13 +20,17 @@
                   Precio: #{number_to_currency(event.price)}
                 %p.mb-2 
                   Token: #{event.auth_token}
-                .row 
+                .row.justify-content-center
                   .col-6.p-0.pr-1
                     %a.btn.btn-primary.btn-sm{:href => event_path(event.id), style:"width:100%;"}
                       Ver Evento
                   .col-6.p-0
                     %a.btn.btn-primary.btn-sm{:href => edit_event_path(event.id), style:"width:100%;"}
                       Editar Evento
+                  .col-6.p-0.mt-2
+                    .btn.btn-danger.btn-sm
+                      = link_to "Eliminar", delete_event_path(event.auth_token), method: "delete", confirm: "Estas seguro?", disable_with: "Processing..." , style: "color:white;"
+
     %header.card-header 
       Públicos
     .card-body
