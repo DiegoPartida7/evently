@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   has_secure_token :token
   has_secure_token :auth_token, length: 36
 
-  validates_presence_of :image
+  # validates_presence_of :image
   validates_presence_of :price
   validates_presence_of :title
   validates_presence_of :description
@@ -20,12 +20,12 @@ class Event < ApplicationRecord
     where(event_type: EventTypeOpen)
   } 
 
-  def closed?
-    event_type == EventTypeClosed
-  end
+  # def closed?
+  #   event_type == EventTypeClosed
+  # end
 
-  def open?
-    event_type == EventTypeOpen
-  end
+  # def open?
+  #   event_type == EventTypeOpen
+  # end
 
 end

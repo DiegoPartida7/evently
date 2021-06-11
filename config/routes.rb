@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'ticket/:id', to: 'tickets#show', as: :ticket
   post 'ticket/:event_id', to: 'tickets#create_ticket', as: :create_ticket
 
+  delete 'borrar-evento/:auth_token', to: 'events#destroy', as: :delete_event
   devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
   ActiveAdmin.routes(self)
 
