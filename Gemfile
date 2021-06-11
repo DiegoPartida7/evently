@@ -36,7 +36,8 @@ gem 'activeadmin'
 gem 'activeadmin_addons'
 gem "aws-sdk-s3", require: false
 gem 'rails-erd', group: :development
-
+gem 'rails-observers'
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

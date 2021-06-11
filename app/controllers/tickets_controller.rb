@@ -22,7 +22,14 @@ class TicketsController < ApplicationController
     @event= Event.find(params[:event_id])
     seats = params[:seat]
     seats.each do |seatt|
-      Ticket.create!(user_id: current_user.id, event_id: @event.id, seat_number: seatt)
+      @ticket = Ticket.new
+      @ticket.user_id = current_user.id
+      @ticket.event_id = @event.id
+      @ticket.seat_number =  seatt
+      @ticket.save!
+      # Ticket.create!(user_id: current_user.id, event_id: @event.id, seat_number: seatt)
+      # TicketMailer.with(ticket: @ticket).new_ticket_email.deliver_later
+
       @event.sold << seatt
       @event.save!
     end
