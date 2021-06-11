@@ -41,10 +41,13 @@ class EventsController < ApplicationController
   end
 
   def edit
-    unless current_user == @event.user
+    
+    if current_user != @event.user
       redirect_back fallback_location: root_path, notice: 'El usuario no es dueño'
+    else
+      render layout: 'main'
     end
-    render layout: 'main'
+    
   end
 
   def update
