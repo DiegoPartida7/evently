@@ -6,7 +6,8 @@ class EventsController < ApplicationController
   before_action :set_events, only: [:index]
   before_action :set_event, only: [:edit, :update, :show]
   before_action :set_private_event, only: [:destroy]
-
+  layout "main"
+  
   def index
 
     if current_user
@@ -44,8 +45,6 @@ class EventsController < ApplicationController
     
     if current_user != @event.user
       redirect_back fallback_location: root_path, notice: 'El usuario no es dueño'
-    else
-      render layout: 'main'
     end
     
   end
@@ -53,15 +52,14 @@ class EventsController < ApplicationController
   def update
     if @event.update event_params
       redirect_to my_events_path, notice: "Se ha modificado el evento"
+
     else
       render :new, status: :unprocessable_entity
     end
-    render layout: 'main'
   end
 
   def private_show
     @event = Event.where(auth_token: params[:auth_token]).first
-    render layout: 'main'
   end
 
   def destroy
